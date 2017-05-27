@@ -19,6 +19,7 @@
 #include "badge_leds.h"
 #include "badge_eink.h"
 #include "badge_power.h"
+#include "badge_buzzer.h"
 
 #include "imgv2_sha.h"
 #include "imgv2_menu.h"
@@ -135,6 +136,7 @@ struct menu_item {
 #include "demo_leds.h"
 #include "demo_ugfx.h"
 #include "demo_power.h"
+#include "demo_buzzer.h"
 
 const struct menu_item demoMenu[] = {
     {"text demo 1", &demoText1},
@@ -159,6 +161,7 @@ const struct menu_item demoMenu[] = {
 #endif // PIN_NUM_LEDS
     {"uGFX demo", &demoUgfx},
     {"charging demo", &demoPower},
+    {"buzzer demo", &demoBuzzer},
     {"tetris?", NULL},
     {"something else", NULL},
     {"test, test, test", NULL},
@@ -379,6 +382,10 @@ app_main(void) {
   ESP_ERROR_CHECK(esp_wifi_start());
   ESP_ERROR_CHECK(esp_wifi_connect());
 #endif // CONFIG_WIFI_USE
+
+#if defined(PORTEXP_PIN_NUM_BUZZER) || defined(MPR121_PIN_NUM_BUZZER)
+  badge_buzzer_init();
+#endif // defined(PORTEXP_PIN_NUM_BUZZER) || defined(MPR121_PIN_NUM_BUZZER)
 
   badge_eink_init();
 
