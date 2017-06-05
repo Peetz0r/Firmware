@@ -18,7 +18,6 @@
 #include "badge_touch.h"
 #include "badge_leds.h"
 #include "badge_eink.h"
-#include "badge_power.h"
 #include "badge_buzzer.h"
 #include "badge_power.h"
 #include "badge_sdcard.h"
@@ -137,7 +136,6 @@ struct menu_item {
 #include "demo_test_adc.h"
 #include "demo_leds.h"
 #include "demo_ugfx.h"
-#include "demo_power.h"
 #include "demo_buzzer.h"
 #include "demo_power.h"
 
@@ -165,7 +163,6 @@ const struct menu_item demoMenu[] = {
     {"LEDs demo", &demo_leds},
 #endif // PIN_NUM_LEDS
     {"uGFX demo", &demoUgfx},
-    {"charging demo", &demoPower},
     {"buzzer demo", &demoBuzzer},
     {"charging demo", &demoPower},
     {"tetris?", NULL},
